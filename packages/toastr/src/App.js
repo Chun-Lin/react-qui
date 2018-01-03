@@ -6,7 +6,7 @@ import { Toastr, QToastr } from './react-component-node-modules/'
 class App extends Component {
   handleClick = evt => {
     if (!this.toastr) return
-    this.toastr.trigger({children: '已複製到剪貼簿。'})
+    this.toastr.trigger({ children: '已複製到剪貼簿。' })
   }
 
   render() {
@@ -19,7 +19,9 @@ class App extends Component {
             position="top-right"
             duration={5000}
           >
-            <QToastr toastrStyle="qts">Test</QToastr>
+            <div>
+              <QToastr toastrStyle="qts">Test</QToastr>
+            </div>
           </Toastr>
         </div>
       </div>
@@ -28,5 +30,3 @@ class App extends Component {
 }
 
 export default App
-
-
