@@ -36,6 +36,10 @@ export default class QToastr extends PureComponent {
     toastrStyle: 'qts',
   }
 
+  static contextTypes = {
+    childProps: PropTypes.object
+  }
+
   getShapeStyle = () => {
     const { width, height } = this.props
     const paddingPixel = 48
@@ -50,7 +54,8 @@ export default class QToastr extends PureComponent {
 
   render() {
     const { toastrStyle, children, className } = this.props
-
+    // const { children } = this.context
+    debugger
     return (
       <div
         style={this.getShapeStyle()}

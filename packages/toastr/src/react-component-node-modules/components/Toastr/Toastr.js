@@ -21,12 +21,24 @@ export default class Toastr extends Component {
     position: 'top-right',
   }
 
+  static childContextTypes = {
+    queue: PropTypes.array
+  }
+
   constructor(props) {
     super(props)
 
     this.state = {
       queue: [],
+      // childProps: {}
     }
+  }
+
+  getChildContext(){
+    return {
+      queue: this.state.queue
+    }
+    debugger
   }
 
   trigger = childProps => {
@@ -43,22 +55,28 @@ export default class Toastr extends Component {
       queue: [...prevState.queue, ...children],
     }))
 
+    // this.setState(prevState => ({
+    //   childProps: {...childProps}
+    // }))
+    // debugger
+
     const { duration } = this.props
     this.timeID = window.setTimeout(() => {
       this.setState(prevState => ({
         queue: prevState.queue.slice(1),
       }))
     }, duration)
+    debugger
   }
 
   componentWillUnmount() {
-    if (!this.id) return
+    if (!this.timeID) return
     window.clearTimeout(this.timeID)
   }
 
   render() {
     const { position, className } = this.props
-
+    const {queue} = this.context
     return (
       <div className={cx([position, 'view-page'])}>
         <div className={cx([className])}>
