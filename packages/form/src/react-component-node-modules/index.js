@@ -5,3 +5,5 @@ export {
 export { default as Label } from './components/Label/Label'
 export { default as InputText } from './components/InputText/InputText'
 export { default as Qselect } from './components/Qselect/Qselect'
+export { default as Textarea } from './components/Textarea/Textarea'
+
